@@ -16,7 +16,7 @@ import './form_movies.css';
 
 export default function Form_movies() {
 
-    
+    const error="";
     const [file, setFile] = useState(null)    
 
     const [movie, setMovies] = useState({
@@ -39,11 +39,11 @@ export default function Form_movies() {
             console.log("erro");
         }else{
             var extence=file.name.split('.');            
-            if(extence[1]==="png" || extence[1]==="jpg"){
-                movie.cover=file
-                console.log(movie);
+            if(extence[1]==="png" || extence[1]==="jpg" || extence[1]==="jpeg"){
+                movie.cover=file                
             }else{
                 console.log("formato no permitido");                
+                alert("no se permite ese formato");
             }
         } 
         
@@ -151,6 +151,7 @@ export default function Form_movies() {
                                 className="form-control"                                
                                 onChange={selectedHandler}                             
                             />
+                            <p>Solo se permiten los siguientes formatos png - jpg - jpeg</p>                            
                             <Button className="upload"  onClick={upload_file}> 
                                 Subir Imagen
                             </Button> 
