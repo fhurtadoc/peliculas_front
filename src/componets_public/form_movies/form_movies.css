@@ -1,0 +1,17 @@
+.formTitle{
+    text-align: center;
+    color: #1976d2;
+    
+}
+
+.continer{
+    display: grid;    
+    row-gap: 10px;
+    padding: 5%;
+    align-items: center;
+}
+
+.upload{    
+    width: 200px;    
+    
+}
