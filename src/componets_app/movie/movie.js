@@ -46,7 +46,8 @@ export default function Movie() {
                 headers: { "Content-Type": "application/json" },                    
                 body: JSON.stringify(data),
             });
-            await response2.json();            
+            await response2.json(); 
+            
         } catch (error) {
             console.error(error);
         }
