@@ -1,5 +1,5 @@
 const Env={
-    URL: 'http://localhost:3001/'
+    URL: 'https://calm-harbor-35704.herokuapp.com/'
 }
 
 export default Env;
