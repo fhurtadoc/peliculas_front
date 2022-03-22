@@ -12,6 +12,9 @@ export default function Movies() {
     const [movies, setMovies ]=useState([]);
     const [premieres, setpremieres ]=useState([]);
     
+    const now= new Date()
+    const date_befor_clear=sumarDias(now, -16);
+
     const loadMovies= async()=>{
         const response= await fetch(env.URL+'movies/list_movies');
         const data = await response.json();        
@@ -19,13 +22,15 @@ export default function Movies() {
 
     }
 
-    const loanMovie= async(id)=>{
-        
-    }
+    function sumarDias(fecha, dias){
+        fecha.setDate(fecha.getDate() + dias);
+        return fecha;
+      }
+    
     
 
     useEffect(() => {
-        loadMovies();
+        loadMovies();        
     }, []);
     
     
@@ -33,23 +38,23 @@ export default function Movies() {
         <React.Fragment> 
             <h1>Estrenos</h1>
             <div className="estrenos">                
-            <Card  className="movie" >
-                    una                    
-                </Card>
-                <Card className="movie" >
-                    dos                    
-                </Card>
-
-                <Card className="movie" >
-                    tres                    
-                </Card>
-
-                <Card className="movie" >
-                    cuatro                   
-                </Card>
-                <Card className="movie">
-                    cuatro                   
-                </Card>                
+                {movies.filter(movie=>new Date(movie.date_release) >= date_befor_clear).map(filter=>(
+                    <Card  className="movie" >                    
+                        <figure>
+                            <img src={env.URL+ filter.cover} alt={filter.title+".img"}/>
+                            <div class="capa">
+                                <h3>{filter.title}</h3>
+                                <p>{filter.description}</p>                            
+                                <Button
+                                    variant="contained"                                
+                                    onClick={() => navigate_local(`/movie/${filter.id_movie}`)}
+                                    >
+                                    var mas
+                                </Button> 
+                            </div>                
+                        </figure>
+                    </Card>
+                ))}
             </div>
             <h1>Todas las Peliculas</h1>
             <div id="allmovies">

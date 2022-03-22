@@ -66,6 +66,7 @@ export default function Movie() {
                     <p> Descripcion: {movie.description}</p>
                     <p> La pelicula Dura:{movie.long_time}</p>
                     <p>El puntaje a la fecha de esta pelicula es: {movie.cal_score}</p>
+                    <p>Feche de lanzamiento: {movie.date_release}</p>
                         <Box
                             sx={{
                                 '& > legend': { mt: 2 },
